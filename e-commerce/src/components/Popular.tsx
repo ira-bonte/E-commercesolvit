@@ -7,31 +7,9 @@ import pop3 from '../images/pop3.jpeg'
 
 // Mock data
 const products = [
-  {
-    id: 1,
-    name: 'Transparent Shockproof Case',
-    image: pop1,
-    price: 15,
-    category: 'Shockproof',
-    rating: 4,
-  },
-  {
-    id: 2,
-    name: 'Monica Case',
-    image: pop2,
-    price: 12,
-    category: 'Minimalist',
-    rating: 5,
-  },
-  {
-    id: 3,
-
-    name: 'Matte Black Case',
-    image: pop3,
-    price: 18,
-    category: 'Decorative',
-    rating: 4,
-  },
+  { id: 1, name: 'Transparent Shockproof Case', image: pop1, price: 15, category: 'iPhone', rating: 4, },
+  { id: 2, name: 'Monica Case', image: pop2, price: 12, category: 'Google Pixel', rating: 5, },
+  { id: 3, name: 'Matte Black Case', image: pop3, price: 18, category: 'Samsung', rating: 4,},
 ];
 
 // ProductCard Component
