@@ -1,16 +1,8 @@
 import './App.css';
-import NavBar from './components/Navbar';
-import Intro from './components/Intro';
-
-function App(){
-    return(
-        <main>
-            <NavBar />
-            <Intro/>
-        </main>
-    );
 import Navbar from './components/Navbar';
 import Intro from './components/Intro';
+import Popular from './components/Popular'
+
 import Latest from './components/Latest';
 import { CartProvider } from './components/CartContext'; 
 
@@ -19,6 +11,7 @@ function App(){
    <main>
     <Navbar />  
     <Intro />
+    <Popular />
     <CartProvider>
       <div className="min-h-screen bg-gray-100">
       <Latest />
