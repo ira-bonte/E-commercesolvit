@@ -1,4 +1,14 @@
 import './App.css';
+import NavBar from './components/Navbar';
+import Intro from './components/Intro';
+
+function App(){
+    return(
+        <main>
+            <NavBar />
+            <Intro/>
+        </main>
+    );
 import Navbar from './components/Navbar';
 import Intro from './components/Intro';
 import Latest from './components/Latest';
@@ -17,5 +27,5 @@ function App(){
    </main>
   )
 }
-  
+
 export default App;
