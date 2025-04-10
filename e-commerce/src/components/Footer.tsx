@@ -8,15 +8,15 @@ const Footer: React.FC = () => {
         {/* Contact Information */}
         <div className="mb-4 md:mb-0">
           <h4 className="text-lg text-orange-500 font-semibold mb-4 px-1 ">Contact Us</h4>
-          <div className="flex items-center mb-2 font-bold px-7">
+          <div className="flex items-center mb-2 font-bold">
             <FaPhone className="mr-2" />
             <p>+250 788 931 242</p>
           </div>
-          <div className="flex items-center mb-2 font-bold px-7">
+          <div className="flex items-center mb-2 font-bold">
             <FaPhone className="mr-2" />
             <p>+250 792 332 012</p>
           </div>
-          <div className="flex items-center mb-2 font-bold px-7">
+          <div className="flex items-center mb-2 font-bold">
             <FaEnvelope className="mr-2" />
             <p>info@lyditeshop.com</p>
           </div>
@@ -44,14 +44,14 @@ const Footer: React.FC = () => {
         {/* Social Media */}
         <div className="mb-4 md:mb-0">
           <h4 className="text-lg text-orange-500 font-semibold mb-4">Follow Us</h4>
-          <div className="flex space-x-4 px-14">
+          <div className="flex space-x-4">
             <a href="#" className="hover:text-gray-300">
               <FaFacebook size={24} />
             </a>
-            <a href="#" className="hover:text-gray-300 ">
+            <a href="#" className="hover:text-gray-300">
               <FaTwitter size={24} />
             </a>
-            <a href="#" className="hover:text-gray-300 ">
+            <a href="#" className="hover:text-gray-300">
               <FaInstagram size={24} />
             </a>
           </div>
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
         {/* Newsletter Signup (Optional) */}
         <div>
           <h4 className="text-lg text-orange-500 font-semibold mb-4">Subscribe</h4>
-          <p className="text-sm text-gray-400 mb-2 font-bold px-4">
+          <p className="text-sm text-gray-400 mb-2 font-bold">
             Stay up to date with our latest products and offers.
           </p>
           <div className="flex py-5">
