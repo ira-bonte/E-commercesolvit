@@ -1,4 +1,17 @@
 import './App.css';
+<<<<<<< HEAD
+=======
+import NavBar from './components/Navbar';
+import Intro from './components/Intro';
+
+function App(){
+    return(
+        <main>
+            <NavBar />
+            <Intro/>
+        </main>
+    );
+>>>>>>> 89e105f1d63f2f6f742c389567ca56b4c648d75f
 import Navbar from './components/Navbar';
 import Intro from './components/Intro';
 import Popular from './components/Popular'
