@@ -1,14 +1,14 @@
 import './App.css';
-import Navbar from './components/Navbar';
+import NavBar from './components/Navbar';
 import Intro from './components/Intro';
 
 function App(){
-  return(
-   <main>
-    <Navbar />
-    <Intro />
-   </main>
-  )
+    return(
+        <main>
+            <NavBar />
+            <Intro/>
+        </main>
+    );
 }
 
 export default App;
