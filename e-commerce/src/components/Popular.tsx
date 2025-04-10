@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { AiFillStar } from 'react-icons/ai';
+import { useLocation } from 'react-router-dom';
 import pop1 from '../images/pop1.jpeg'
 import pop2 from '../images/pop2.jpeg'
 import pop3 from '../images/pop3.jpeg'
@@ -48,13 +49,20 @@ const ProductGrid: FC<{ products: typeof products }> = ({ products }) => (
 
 // Popular Section
 const Popular = () => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const categoryQuery = queryParams.get("category")?.toLowerCase() || "";
+
+  const filteredProducts = categoryQuery
+    ? products.filter((p) => p.category.toLowerCase().includes(categoryQuery))
+    : products;
   return (
     <section className="bg-gray-50 py-10">
       <div className="text-center mb-6">
         <h2 className="text-3xl font-bold text-gray-800">Popular Products</h2>
         <p className="text-gray-500">Browse our best-selling phone cases</p>
       </div>
-      <ProductGrid products={products} />
+      <ProductGrid products={filteredProducts} />
     </section>
   );
 };
