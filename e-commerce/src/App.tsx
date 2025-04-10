@@ -1,14 +1,17 @@
 import './App.css';
-import NavBar from './components/Navbar';
+import Navbar from './components/Navbar';
 import Intro from './components/Intro';
+import Popular from './components/Popular'
+
 
 function App(){
-    return(
-        <main>
-            <NavBar />
-            <Intro/>
-        </main>
-    );
+  return(
+   <main>
+    <Navbar />  
+    <Intro />
+    <Popular />
+   </main>
+  )
 }
 
 export default App;
