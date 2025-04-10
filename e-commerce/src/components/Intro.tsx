@@ -10,7 +10,7 @@ const Intro: React.FC = () => {
 
                 <div className='text-center md:text-left md:w-1/2'>
 
-                    <h3 className='text-base md:text-5xl font-bold p-0 m-0 py-10'> Sleek and Stylish </h3>
+                    <h3 className='text-base md:text-5xl font-bold p-0 m-0 py-10'> Sleek $ Stylish </h3>
                     <h2 className='text-3xl md:text-6xl font-extrabold text-orange-600 m-0'> Phone Case Collections 2025</h2>
                     <p className='text-gray-600 text-base md:text-2xl mb-6 py-5 font-bold'> 
                         Protect your phone in style. Discover vibrant, durable cases made just for you.

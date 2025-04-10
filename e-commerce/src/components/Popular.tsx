@@ -17,7 +17,7 @@ const products = [
   },
   {
     id: 2,
-    name: 'Matte Black Case',
+    name: 'Monica Case',
     image: pop2,
     price: 12,
     category: 'Minimalist',
@@ -25,7 +25,7 @@ const products = [
   },
   {
     id: 3,
-    name: 'Pastel Flower Case',
+    name: 'Matte Black Case',
     image: pop3,
     price: 18,
     category: 'Decorative',
