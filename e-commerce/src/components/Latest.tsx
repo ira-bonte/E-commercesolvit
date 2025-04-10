@@ -1,5 +1,6 @@
 // src/components/LatestArrivals.tsx
 import React from 'react';
+import { AiFillStar } from 'react-icons/ai';
 import { useCart } from './CartContext';
 import Shiny from '../images/lat1.jpeg';
 import Water from '../images/lat2.jpeg';
@@ -54,7 +55,7 @@ const LatestArrivals: React.FC = () => {
   const { addToCart } = useCart();
 
   return (
-    <div className="py-8">
+    <div className="py-8 bg-gray-50">
       <h2 className="text-2xl font-semibold text-gray-800 mb-6">LATEST ARRIVALS</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {latestArrivalsData.map((product) => (
