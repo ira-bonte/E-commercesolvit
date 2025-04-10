@@ -25,6 +25,7 @@ const products = [
   },
   {
     id: 3,
+
     name: 'Matte Black Case',
     image: pop3,
     price: 18,
