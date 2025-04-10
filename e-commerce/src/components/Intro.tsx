@@ -1,4 +1,5 @@
 import React from 'react';
+import pop4 from '../images/pop4.jpeg';
 
 const Intro: React.FC = () => {
     return(
@@ -12,6 +13,9 @@ const Intro: React.FC = () => {
                     <h3 className='text-base md:text-5xl font-bold text-gray-900 p-0 m-0'> Sleek $ Stylish </h3>
                     <h2 className='text-3xl md:text-6xl font-extrabold text-red-600 m-0'> Phone Case Collections 2025</h2>
                     <p className='text-gray-600 text-base md:text-lg mb-6'> 
+                    <h3 className='text-base md:text-5xl font-bold text-600 p-0 m-0 py-10'> Sleek $ Stylish </h3>
+                    <h2 className='text-3xl md:text-6xl font-extrabold text-orange-600 m-0 py'> Phone Case Collections 2025</h2>
+                    <p className='text-gray-600 text-base md:text-2xl mb-6 py-5 font-bold'> 
                         Protect your phone in style. Discover vibrant, durable cases made just for you.
                     </p>
 
@@ -23,6 +27,9 @@ const Intro: React.FC = () => {
                             <span>Watch Video</span>
                             <span className="text-red-500 text-lg">▶</span>
                         </button>
+                        <button className="bg-orange-600 text-white px-6 py-3  md:text-xl rounded-full font-semibold hover:bg-red-700 transition cursor-pointer">
+                            Shop Now
+                        </button>
                     </div>
                 </div>
 
@@ -33,6 +40,9 @@ const Intro: React.FC = () => {
                     src="./src/images/intro.jpeg"
                     alt="Featured Phone Case"
                     className="w-[250px] h-[250px] drop-shadow-xl"
+                    src={pop4}
+                    alt="Featured Phone Case"
+                    className="w-130 h-130 drop-shadow-xl rounded-4xl"
                 />
                 </div>
             </div>
