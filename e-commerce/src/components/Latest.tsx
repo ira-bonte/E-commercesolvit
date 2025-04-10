@@ -1,5 +1,6 @@
 // src/components/LatestArrivals.tsx
 import React from 'react';
+import { AiFillStar } from 'react-icons/ai';
 import { useCart } from './CartContext';
 import Shiny from '../images/lat1.jpeg';
 import Water from '../images/lat2.jpeg';
@@ -33,11 +34,16 @@ const ProductCard: React.FC<{
       </div>
       <div className="p-4">
         <h3 className="text-lg font-semibold text-gray-700 mb-2">{product.name}</h3>
-        <p className="text-gray-600">${product.price}</p>
+        <p className="text-xl font-bold mt-2">${product.price}</p>
         <p className="text-sm text-gray-500">Category: {product.category}</p>
-        <div className="flex items-center mt-2">
-          {/* Star rating could go here */}
-        </div>
+        <div className="flex items-center gap-1 text-yellow-400">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <AiFillStar
+          key={i}
+          className={i < product.rating ? 'text-yellow-400' : 'text-gray-300'}
+        />
+      ))}
+    </div>        
         <button
           className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded text-sm mr-2 cursor-pointer"
           onClick={() => onAddToCart(product.id)}
@@ -56,7 +62,7 @@ const LatestArrivals: React.FC = () => {
   const { addToCart } = useCart();
 
   return (
-    <div className="py-8">
+    <div className="py-8 bg-gray-50">
       <h2 className="text-2xl font-semibold text-gray-800 mb-6">LATEST ARRIVALS</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {latestArrivalsData.map((product) => (
