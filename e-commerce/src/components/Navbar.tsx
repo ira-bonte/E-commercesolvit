@@ -1,37 +1,43 @@
-import { FC } from "react";
-import { ShoppingCart, Search } from "lucide-react";
+// src/components/Navbar.tsx
+import { FC, useState } from "react";
+import { ShoppingCart} from "lucide-react";
 import logo from "../images/logo2.jpg";
-import { useCart } from "./CartContext"; // 👈 import
+import { useCart } from "./CartContext";
+import Cart from "./Cart"; // Assuming you have a Cart component that will display cart items
 
 const Navbar: FC = () => {
-  const { cart } = useCart(); // 👈 access cart
+  const { cart } = useCart();
+  const [showCart, setShowCart] = useState(false); // Manage modal visibility
 
+  const cartItemCount = Object.values(cart).reduce((total, quantity) => total + quantity, 0);
   return (
-    <nav className="w-full flex flex-wrap justify-between items-center px-6 py-4 bg-white shadow-lg cursor-pointer">
-      {/* Logo */}
-      <img src={logo} alt="Logo" className="w-60 h-auto object-contain" />
+    <div>
+      <nav className="w-full flex flex-wrap justify-between items-center px-6 py-4 bg-white shadow-lg cursor-pointer">
+        {/* Logo */}
+        <img src={logo} alt="Logo" className="w-60 h-auto object-contain" />
 
-      {/* Nav Links */}
-      <ul className="flex flex-row gap-6 text-[20px] font-medium text-orange-700">
-        <li className="text-orange-500 cursor-pointer hover:text-orange-700 ">Home</li>
-        <li className="text-orange-500 cursor-pointer hover:text-orange-700">Category</li>
-        <li className="text-orange-500 cursor-pointer hover:text-orange-700">Popular</li>
-        <li className="text-orange-500 cursor-pointer hover:text-orange-700">Orders</li>
-      </ul>
+        {/* Nav Links */}
+        <ul className="flex flex-row gap-6 text-[20px] font-medium text-orange-700">
+          <li className="text-orange-500 cursor-pointer hover:text-orange-700">Home</li>
+          <li className="text-orange-500 cursor-pointer hover:text-orange-700">Category</li>
+          <li className="text-orange-500 cursor-pointer hover:text-orange-700">Popular</li>
+          <li className="text-orange-500 cursor-pointer hover:text-orange-700">Orders</li>
+        </ul>
 
-      {/* Icons */}
-      <div className="flex gap-4 mt-4 lg:mt-0">
-        <Search className="w-5 h-5 cursor-pointer text-gray-700 hover:text-red-500" />
-        <div className="relative">
-          <ShoppingCart className="w-6 h-6 text-gray-700 cursor-pointer hover:text-red-500" />
-          {cart.length > 0 && (
+        {/* Icons */}
+        <div className="flex gap-4 mt-4 lg:mt-0">
+          <div className="relative" onClick={() => setShowCart(true)}> {/* Toggle the cart modal */}
+            <ShoppingCart className="w-6 h-6 text-gray-700 cursor-pointer hover:text-red-500" />
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-              {cart.length}
+              {cartItemCount}
             </span>
-          )}
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Show Cart Modal */}
+      {showCart && <Cart />}
+    </div>
   );
 };
 
