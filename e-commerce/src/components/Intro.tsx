@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import pop4 from '../images/pop4.jpeg';
 
 const Intro: React.FC = () => {
@@ -18,9 +19,9 @@ const Intro: React.FC = () => {
                     </p>
                     
                     <div className='flex flex-col sm:flex-row justify-center md:justify-start gap-4'>
-                        <button className="bg-orange-600 text-white px-6 py-3  md:text-xl rounded-full font-semibold hover:bg-red-700 transition cursor-pointer">
+                      <Link to="/store">  <button className="bg-orange-600 text-white px-6 py-3  md:text-xl rounded-full font-semibold hover:bg-red-700 transition cursor-pointer">
                             Shop Now
-                        </button>
+                        </button> </Link>
                     </div>
                 </div>
 

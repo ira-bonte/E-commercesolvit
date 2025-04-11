@@ -1,21 +1,19 @@
-// src/components/LatestArrivals.tsx
+// Latest.tsx
 import React, { useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
-import { useCart } from './CartContext';
 import Shiny from '../images/lat1.jpeg';
 import Water from '../images/lat2.jpeg';
 import Name from '../images/lat3.jpeg';
 import Butterfly from '../images/lat4.jpeg';
+import { useCart } from '../components/CartContext'; 
 
-// Sample product data (can be fetched later)
 const latestArrivalsData = [
-  { id: 1, name: 'Shiny', price: 453, image: Shiny, category: 'Iphone 13', rating: 4.9 },
-  { id: 2, name: 'Water', price: 124, image: Water, category: 'Techno Pop 5', rating: 4.5 },
-  { id: 3, name: 'With Name', price: 322, image: Name, category: 'Nokia 6', rating: 2.5 },
-  { id: 4, name: 'Butterfly', price: 234, image: Butterfly, category: 'Samsung S8', rating: 4.5 },
+  { id: 1, name: 'Shiny with phone grip', price: 3.12, image: Shiny, category: 'Iphone 13', rating: 4 },
+  { id: 2, name: 'Underwater phone case', price: 346, image: Water, category: 'Techno Pop 5', rating: 5 },
+  { id: 3, name: 'With desired Name', price: 4.16, image: Name, category: 'Google Pixel 5', rating: 4 },
+  { id: 4, name: 'Simple Butterfly', price: 2.77, image: Butterfly, category: 'Tecno pop 5', rating: 3 },
 ];
 
-// 💡 Inner component defined in same file 
 const ProductCard: React.FC<{
   product: {
     id: number;
@@ -25,8 +23,9 @@ const ProductCard: React.FC<{
     category: string;
     rating: number;
   };
-  onAddToCart: (productId: number) => void;
-}> = ({ product, onAddToCart }) => {
+}> = ({ product }) => {
+  const { addToCart } = useCart(); // Destructure addToCart from useCart
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="relative">
@@ -42,11 +41,11 @@ const ProductCard: React.FC<{
               className={i < product.rating ? 'text-yellow-400' : 'text-gray-300'}
             />
           ))}
-        </div>  
-        <p className="text-xl font-bold mt-2">${product.price}</p>      
+        </div>
+        <p className="text-xl font-bold mt-2">${product.price}</p>
         <button
-          className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded text-sm mr-2 cursor-pointer"
-          onClick={() => onAddToCart(product.id)}>
+          onClick={() => addToCart(product)} // Add to cart button
+          className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded text-sm mr-2 cursor-pointer">
           Add to Cart
         </button>
       </div>
@@ -55,37 +54,33 @@ const ProductCard: React.FC<{
 };
 
 const LatestArrivals: React.FC = () => {
-  const { addToCart } = useCart();
-  
-  // State for search term and filtered products
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState(latestArrivalsData);
 
-  // Filter function for search term
   const filterProducts = (term: string) => {
     const filtered = latestArrivalsData.filter((product) => {
       return (
-        product.name.toLowerCase().includes(term.toLowerCase()) || // Search by name
-        product.category.toLowerCase().includes(term.toLowerCase()) || // Search by category
-        product.price.toString().includes(term) // Search by price (string conversion for flexibility)
+        product.name.toLowerCase().includes(term.toLowerCase()) ||
+        product.category.toLowerCase().includes(term.toLowerCase()) ||
+        product.price.toString().includes(term)
       );
     });
     setFilteredProducts(filtered);
   };
 
-  // Handle search change
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSearchTerm(value);
-    filterProducts(value);  // Apply the filter
+    filterProducts(value);
   };
 
   return (
-    <div className="py-8 bg-gray-50">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6">LATEST ARRIVALS</h2>
+    <div id="latest" className="py-8 bg-gray-50">
+      <h2 className="text-3xl font-bold text-gray-800">Latest Arrivals</h2>
+      <p className="text-gray-500 mb-6">Browse our new-in-stock phone cases</p>
 
       {/* Search Input */}
-      <div className="mb-4 text-center">
+      <div className="mb-8 text-center">
         <input
           type="text"
           className="w-1/2 p-2 border border-gray-300 rounded-md"
@@ -98,7 +93,7 @@ const LatestArrivals: React.FC = () => {
       {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>

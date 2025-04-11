@@ -1,45 +1,56 @@
 import React, { useState } from 'react';
+import { useCart } from '../components/CartContext'; 
 import { AiFillStar } from 'react-icons/ai';
-import { useCart } from '../components/CartContext';
+import c from '../images/store/iphone1.jpg';
+import g from '../images/store/iphone2.jpg';
+import h from '../images/store/iphone3.jpg';
+import i from '../images/store/pixel1.jpg';
+import j from '../images/store/pixel2.jpg';
+import l from '../images/store/pixel10.jpg';
+import m from '../images/store/samsung1.jpg';
+import n from '../images/store/samsung2.jpg';
+import o from '../images/store/samsung3.jpg';
+import p from '../images/store/grip1.jpg';
+import s from '../images/store/gripst2.jpg';
+import t from '../images/store/iphone4.jpg';
+import u from '../images/store/gripst3.jpg';
+import v from '../images/store/pixel4.jpg';
+import w from '../images/store/grip4.jpg';
+import x from '../images/store/samsung4.jpg';
+import q from '../images/lat1.jpeg';
+import b from '../images/lat2.jpeg';
+import k from '../images/lat3.jpeg';
+import r from '../images/lat4.jpeg';
+import d from '../images/pop1.jpeg';
+import e from '../images/pop2.jpeg';
+import f from '../images/pop3.jpeg';
+import a from '../images/pop4.jpeg';
 
-// Import your images
-import a from '../images/store/iphone1.jpg';
-import b from '../images/store/iphone2.jpg';
-import c from '../images/store/iphone3.jpg';
-import d from '../images/store/pixel1.jpg';
-import e from '../images/store/pixel2.jpg';
-import f from '../images/store/pixel3.jpg';
-import g from '../images/store/samsung1.jpg';
-import h from '../images/store/samsung2.jpg';
-import i from '../images/store/samsung3.jpg';
-import j from '../images/store/grip1.jpg';
-import k from '../images/store/gripst2.jpg';
-import l from '../images/store/iphone4.jpg';
-import m from '../images/store/gripst3.jpg';
-import n from '../images/store/pixel4.jpg';
-import o from '../images/store/grip4.jpg';
-import p from '../images/store/samsung4.jpg';
-
-
-
-// You can later add other categories like Popular, Accessories, etc.
 const allProducts = [
-  { id: 1, name: 'Shiny', price: 453, image: a, category: 'Iphone 13', rating: 4.9 },
-  { id: 2, name: 'Water', price: 124, image: b, category: 'Techno Pop 5', rating: 4.5 },
-  { id: 3, name: 'With Name', price: 322, image: c, category: 'Nokia 6', rating: 2.5 },
-  { id: 4, name: 'Butterfly', price: 234, image: d, category: 'Samsung S8', rating: 4.5 },
-  { id: 5, name: 'Butterfly', price: 234, image: e, category: 'Samsung S8', rating: 4.5 },
-  { id: 6, name: 'Butterfly', price: 234, image: f, category: 'Samsung S8', rating: 4.5 },
-  { id: 7, name: 'Butterfly', price: 234, image: g, category: 'Samsung S8', rating: 4.5 },
-  { id: 8, name: 'Butterfly', price: 234, image: h, category: 'Samsung S8', rating: 4.5 },
-  { id: 9, name: 'Butterfly', price: 234, image: i, category: 'Samsung S8', rating: 4.5 },
-  { id: 10, name: 'Butterfly', price: 234, image: j, category: 'Samsung S8', rating: 4.5 },
-  { id: 11, name: 'Butterfly', price: 234, image: k, category: 'Samsung S8', rating: 4.5 },
-  { id: 12, name: 'Butterfly', price: 234, image: l, category: 'Samsung S8', rating: 4.5 },
-  { id: 13, name: 'Butterfly', price: 234, image: m, category: 'Samsung S8', rating: 4.5 },
-  { id: 14, name: 'Butterfly', price: 234, image: n, category: 'Samsung S8', rating: 4.5 },
-  { id: 15, name: 'Butterfly', price: 234, image: o, category: 'Samsung S8', rating: 4.5 },
-  { id: 16, name: 'Butterfly', price: 234, image: p, category: 'Samsung S8', rating: 4.5 },
+  { id: 1, name: 'Wallet case', price: 6.94, image: a, category: 'iPhone 13 Pro', rating: 5 },
+  { id: 2, name: 'Underwater phone case', price: 346, image: b, category: 'Any phone', rating: 5 },
+  { id: 3, name: 'Mirror hearts', price: 3.81, image: c, category: 'iPhone 14', rating: 2 },
+  { id: 4, name: 'Transparent Shockproof Case', image: d, price: 15, category: 'Iphone 11', rating: 4 },
+  { id: 5, name: 'Monica Case', image: e, price: 12, category: 'Iphone 12', rating: 5 },
+  { id: 6, name: 'Matte Black Case', image: f, price: 18, category: 'Samsung S6 Edge', rating: 4 },
+  { id: 7, name: 'Aesthetic girly', price: 4.16, image: g, category: 'iPhone11', rating: 5 },
+  { id: 8, name: 'Bear Face', price: 3.12, image: h, category: 'iPhone X', rating: 3 },
+  { id: 9, name: 'Girly quote', price: 3.12, image: i, category: 'Google Pixel 4', rating: 4 },
+  { id: 10, name: 'Black Magsafe-compatible', price: 3.47, image: j, category: 'Google Pixel 9 Pro', rating: 4 },
+  { id: 11, name: 'With desired Name', price: 4.16, image: k, category: 'Google Pixel 5', rating: 4 },
+  { id: 12, name: 'Gray/Black vector', price: 2.77, image: l, category: 'Google Pixel 3', rating: 3 },
+  { id: 13, name: 'Black shiny petals', price: 3.12, image: m, category: 'Samsung Galaxy S21', rating: 3 },
+  { id: 14, name: 'Black magnetic coinel', price: 3.47, image: n, category: 'Samsung Galaxy S24', rating: 4 },
+  { id: 15, name: 'Galaxy Planet', price: 3.12, image: o, category: 'Samsung A05s', rating: 3 },
+  { id: 16, name: 'Black $ White', price: 1.73, image: p, category: 'Phone sockets', rating: 3 },
+  { id: 17, name: 'Shiny with phone grip', price: 3.12, image: q, category: 'Iphone 13', rating: 4 },
+  { id: 18, name: 'Simple Butterfly', price: 2.77, image: r, category: 'Tecno pop 5', rating: 3 },
+  { id: 19, name: 'Round Phone stickers', price: 2.08, image: s, category: 'Phone stickers', rating: 4 },
+  { id: 20, name: 'Chinese dynasty case', price: 2.98, image: t, category: 'iPhone 12 Pro', rating: 4 },
+  { id: 21, name: 'Rectangular Phone stickers', price: 2.08, image: u, category: 'Phone stickers', rating: 4 },
+  { id: 22, name: 'Dragon chain', price: 3.12, image: v, category: 'Google Pixel 6', rating: 3 },
+  { id: 23, name: 'White Heart', price: 1.73, image: w, category: 'Phone sockets', rating: 2 },
+  { id: 24, name: 'Hello Kitty Baby', price: 3.12, image: x, category: 'Samsung S8', rating: 3 },
 ];
 
 const ProductCard: React.FC<{
@@ -51,9 +62,10 @@ const ProductCard: React.FC<{
     category: string;
     rating: number;
   };
-  onAddToCart: (productId: number) => void;
-}> = ({ product, onAddToCart }) => {
-  return (
+
+  }> = ({ product }) => {
+    const { addToCart } = useCart();
+    return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="relative">
         <img src={product.image} alt={product.name} className="w-70 h-80 m-auto" />
@@ -71,19 +83,16 @@ const ProductCard: React.FC<{
         </div>
         <p className="text-xl font-bold mt-2">${product.price}</p>
         <button
-          className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded text-sm mr-2 cursor-pointer"
-          onClick={() => onAddToCart(product.id)}
-        >
-          Add to Cart
-        </button>
+        onClick={() => addToCart(product)} // Add to cart button
+        className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded text-sm mr-2 cursor-pointer">
+        Add to Cart
+      </button>
       </div>
     </div>
   );
 };
 
 const Store: React.FC = () => {
-  const { addToCart } = useCart();
-
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState(allProducts);
 
@@ -120,10 +129,13 @@ const Store: React.FC = () => {
       {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4">
         {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
+
     </div>
+
+
   );
 };
 

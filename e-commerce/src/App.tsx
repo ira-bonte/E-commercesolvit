@@ -1,20 +1,19 @@
-import './App.css'; 
+import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';   
+import Navbar from './components/Navbar';
 import Intro from './components/Intro';
 import Popular from './components/Popular';
 import Footer from './components/Footer';
 import Latest from './components/Latest';
-import { CartProvider } from './components/CartContext'; 
 import Cart from './components/Cart';
-import Store from "./components/Store";
+import Store from './components/Store';
+import { CartProvider } from './components/CartContext';
 
 function App() {
   return (
-    <Router>
-      <CartProvider>
-        <Navbar />  
-        <Cart />
+    <CartProvider>
+      <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={
             <>
@@ -27,10 +26,10 @@ function App() {
             </>
           } />
           <Route path="/store" element={<Store />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
-         
-      </CartProvider>
-    </Router>
+      </Router>
+    </CartProvider>
   );
 }
 
