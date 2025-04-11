@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
+// Define the structure of the cart context
 interface CartContextType {
   cart: { [key: number]: number }; // cart is an object with productId as key and quantity as value
   addToCart: (productId: number) => void;
@@ -12,9 +13,10 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<{ [key: number]: number }>(
-    () => JSON.parse(localStorage.getItem('cart') || '{}') 
+    () => JSON.parse(localStorage.getItem('cart') || '{}') // Load cart from localStorage
   );
 
+  // Product data (example data; in real-world, you can fetch this dynamically)
   const products = [
     { id: 1, name: 'Shiny', price: 453 },
     { id: 2, name: 'Water', price: 124 },
@@ -25,8 +27,8 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const addToCart = (productId: number) => {
     setCart((prevCart) => {
       const updatedCart = { ...prevCart };
-      updatedCart[productId] = (updatedCart[productId] || 0) + 1; 
-      localStorage.setItem('cart', JSON.stringify(updatedCart)); 
+      updatedCart[productId] = (updatedCart[productId] || 0) + 1; // Increment quantity
+      localStorage.setItem('cart', JSON.stringify(updatedCart)); // Save to localStorage
       return updatedCart;
     });
   };
@@ -35,7 +37,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setCart((prevCart) => {
       const updatedCart = { ...prevCart };
       delete updatedCart[productId]; // Remove the item from cart
-      localStorage.setItem('cart', JSON.stringify(updatedCart)); 
+      localStorage.setItem('cart', JSON.stringify(updatedCart)); // Save to localStorage
       return updatedCart;
     });
   };
@@ -46,7 +48,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     } else {
       setCart((prevCart) => {
         const updatedCart = { ...prevCart, [productId]: quantity };
-        localStorage.setItem('cart', JSON.stringify(updatedCart)); 
+        localStorage.setItem('cart', JSON.stringify(updatedCart)); // Save to localStorage
         return updatedCart;
       });
     }
