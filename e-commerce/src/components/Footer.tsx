@@ -45,13 +45,13 @@ const Footer: React.FC = () => {
         <div className="mb-4 md:mb-0">
           <h4 className="text-lg text-orange-500 font-semibold mb-4">Follow Us</h4>
           <div className="flex space-x-4">
-            <a href="#" className="hover:text-gray-300">
+            <a href="https://www.facebook.com/igabe.lyly" target="_blank" className="hover:text-gray-300">
               <FaFacebook size={24} />
             </a>
-            <a href="#" className="hover:text-gray-300">
+            <a href="https://x.com/im_lydivine" target="_blank" className="hover:text-gray-300">
               <FaTwitter size={24} />
             </a>
-            <a href="#" className="hover:text-gray-300">
+            <a href="https://www.instagram.com/ira.validz/" target="_blank" className="hover:text-gray-300">
               <FaInstagram size={24} />
             </a>
           </div>

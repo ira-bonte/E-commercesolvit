@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useCart } from './CartContext';
 import { AiFillStar } from 'react-icons/ai';
 import pop1 from '../images/pop1.jpeg'
 import pop2 from '../images/pop2.jpeg'
@@ -13,7 +14,10 @@ const products = [
 ];
 
 // ProductCard Component
-const ProductCard: FC<{ product: typeof products[0] }> = ({ product }) => (
+const ProductCard: FC<{ 
+  product: typeof products[0];
+  onAddToCart: (productId: number) => void;
+}> = ({ product, onAddToCart }) => (
   <div className="bg-white rounded-2xl shadow-md p-4 hover:scale-105 transition-transform duration-300">
     <img
       src={product.image}
@@ -31,30 +35,35 @@ const ProductCard: FC<{ product: typeof products[0] }> = ({ product }) => (
       ))}
     </div>
     <p className="text-xl font-bold mt-2">${product.price}</p>
-    <button className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded text-sm mr-2 cursor-pointer">
+    <button className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded text-sm mr-2 cursor-pointer"
+    onClick={() => onAddToCart(product.id)}>
       Add to Cart
     </button>
   </div>
 );
 
 // ProductGrid Component
-const ProductGrid: FC<{ products: typeof products }> = ({ products }) => (
+const ProductGrid: FC<{ 
+  products: typeof products;
+  onAddToCart: (productId: number) => void;
+ }> = ({ products, onAddToCart }) => (
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
     {products.map((product) => (
-      <ProductCard key={product.id} product={product} />
+      <ProductCard key={product.id} product={product} onAddToCart={onAddToCart} />
     ))}
   </div>
 );
 
 // Popular Section
 const Popular = () => {
+  const { addToCart } = useCart();
   return (
     <section className="bg-gray-50 py-10">
       <div className="text-center mb-6">
         <h2 className="text-3xl font-bold text-gray-800">Popular Products</h2>
         <p className="text-gray-500">Browse our best-selling phone cases</p>
       </div>
-      <ProductGrid products={products} />
+      <ProductGrid products={products} onAddToCart={addToCart} />
     </section>
   );
 };

@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar';
+import './App.css';
 import Intro from './components/Intro';
 import Popular from './components/Popular'
 import Footer from './components/Footer'
