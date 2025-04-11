@@ -30,12 +30,11 @@ const ProductCard: React.FC<{
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="relative">
-        <img src={product.image} alt={product.name} className="w-100 h-100" />
+        <img src={product.image} alt={product.name} className="w-70 h-80 m-auto" />
       </div>
       <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">{product.name}</h3>
-        <p className="text-xl font-bold mt-2">${product.price}</p>
-        <p className="text-sm text-gray-500">Category: {product.category}</p>
+        <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
+        <p className="text-sm text-gray-500 mb-1">{product.category}</p>
         <div className="flex items-center gap-1 text-yellow-400">
           {Array.from({ length: 5 }).map((_, i) => (
             <AiFillStar
@@ -43,15 +42,12 @@ const ProductCard: React.FC<{
               className={i < product.rating ? 'text-yellow-400' : 'text-gray-300'}
             />
           ))}
-        </div>        
+        </div>  
+        <p className="text-xl font-bold mt-2">${product.price}</p>      
         <button
           className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded text-sm mr-2 cursor-pointer"
-          onClick={() => onAddToCart(product.id)}
-        >
+          onClick={() => onAddToCart(product.id)}>
           Add to Cart
-        </button>
-        <button className="mt-4 bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded text-sm cursor-pointer">
-          View Details
         </button>
       </div>
     </div>
